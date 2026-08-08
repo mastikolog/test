@@ -699,7 +699,7 @@
       box-shadow: 0 0 20px rgba(0, 255, 65, 0.1);
     }
 
-    /* ===== СТРАНИЦЫ (переключаются через JS) ===== */
+    /* ===== СТРАНИЦЫ ===== */
     .page {
       display: none;
       animation: pageFade 0.4s ease;
@@ -744,6 +744,75 @@
       font-size: 13px;
     }
 
+    .page-content-inner .section-divider {
+      border: 0;
+      border-top: 1px solid var(--line);
+      margin: 30px 0 25px 0;
+      opacity: 0.6;
+      position: relative;
+    }
+
+    .page-content-inner .section-divider::after {
+      content: "◆";
+      position: absolute;
+      left: 50%;
+      top: -10px;
+      transform: translateX(-50%);
+      background: var(--ink);
+      padding: 0 12px;
+      color: var(--green);
+      font-size: 12px;
+      letter-spacing: 4px;
+    }
+
+    .page-content-inner .record__value ul {
+      margin: 8px 0 0;
+      padding-left: 18px;
+      list-style: none;
+    }
+    .page-content-inner .record__value ul li {
+      position: relative;
+      padding-left: 18px;
+      margin: 5px 0;
+      color: var(--muted);
+    }
+    .page-content-inner .record__value ul li::before {
+      content: "▸";
+      position: absolute;
+      left: 0;
+      color: var(--green);
+    }
+
+    .page-content-inner .record__value .highlight {
+      color: var(--green-hot);
+      font-weight: 700;
+      text-shadow: 0 0 10px rgba(0, 255, 65, 0.2);
+    }
+
+    .page-content-inner .record__value .warn {
+      color: var(--amber);
+      font-weight: 600;
+    }
+
+    .page-content-inner .record__value .danger {
+      color: var(--red);
+      font-weight: 600;
+    }
+
+    .note-box {
+      border-left: 2px solid var(--amber);
+      padding: 12px 16px;
+      margin: 15px 0 0 0;
+      background: rgba(226, 182, 91, 0.06);
+      border-radius: 0 4px 4px 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .note-box strong {
+      color: var(--amber);
+    }
+
     .command-rail {
       position: sticky;
       top: 10px;
@@ -759,8 +828,21 @@
       box-shadow: 0 10px 40px rgba(0,0,0,.25);
       align-items: center;
     }
-    .search-wrap { position: relative; display: flex; align-items: center; min-width: 0; }
-    .search-wrap::before { position: absolute; left: 12px; content: ">"; color: var(--cyan); }
+
+    .search-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+      min-width: 0;
+    }
+
+    .search-wrap::before {
+      position: absolute;
+      left: 12px;
+      content: ">";
+      color: var(--cyan);
+    }
+
     .search {
       width: 100%;
       min-height: 40px;
@@ -771,8 +853,15 @@
       outline: 1px solid transparent;
       transition: var(--ease);
     }
-    .search:focus { outline-color: var(--line-strong); background: rgba(103, 245, 138, .075); }
-    .search::placeholder { color: var(--faint); }
+
+    .search:focus {
+      outline-color: var(--line-strong);
+      background: rgba(103, 245, 138, .075);
+    }
+
+    .search::placeholder {
+      color: var(--faint);
+    }
 
     .control {
       min-height: 40px;
@@ -786,9 +875,22 @@
       font-size: 10px;
       white-space: nowrap;
     }
-    .control:hover { color: var(--ink); border-color: var(--green); background: var(--green); }
-    .control:active { transform: translateY(1px); }
-    .control[aria-pressed="true"] { color: var(--ink); background: var(--cyan); border-color: var(--cyan); }
+
+    .control:hover {
+      color: var(--ink);
+      border-color: var(--green);
+      background: var(--green);
+    }
+
+    .control:active {
+      transform: translateY(1px);
+    }
+
+    .control[aria-pressed="true"] {
+      color: var(--ink);
+      background: var(--cyan);
+      border-color: var(--cyan);
+    }
 
     .auth-banner {
       display: grid;
@@ -804,11 +906,32 @@
       letter-spacing: .11em;
       text-transform: uppercase;
     }
-    .auth-banner__code { color: var(--muted); }
-    .auth-banner__line { height: 1px; overflow: hidden; background: rgba(134, 231, 234, .15); }
-    .auth-banner__line::after { display: block; width: 38%; height: 100%; content: ""; background: var(--cyan); animation: dataRun 2.2s ease-in-out infinite; }
 
-    .archive-layout { display: grid; grid-template-columns: 270px minmax(0, 1fr); gap: 18px; align-items: start; }
+    .auth-banner__code {
+      color: var(--muted);
+    }
+
+    .auth-banner__line {
+      height: 1px;
+      overflow: hidden;
+      background: rgba(134, 231, 234, .15);
+    }
+
+    .auth-banner__line::after {
+      display: block;
+      width: 38%;
+      height: 100%;
+      content: "";
+      background: var(--cyan);
+      animation: dataRun 2.2s ease-in-out infinite;
+    }
+
+    .archive-layout {
+      display: grid;
+      grid-template-columns: 270px minmax(0, 1fr);
+      gap: 18px;
+      align-items: start;
+    }
 
     .index-panel {
       position: sticky;
@@ -817,17 +940,73 @@
       border: 1px solid var(--line);
       background: var(--panel);
     }
-    .index-panel__label { margin: 0 0 15px; color: var(--muted); font-size: 9px; letter-spacing: .22em; text-transform: uppercase; }
-    .index-list { display: grid; gap: 2px; margin: 0; padding: 0; list-style: none; }
-    .index-list a { display: grid; grid-template-columns: 26px 1fr; gap: 8px; padding: 7px 6px; color: var(--faint); text-decoration: none; border-left: 1px solid transparent; font-size: 10px; line-height: 1.35; transition: var(--ease); }
-    .index-list a:hover, .index-list a.active { color: var(--green); border-left-color: var(--green); background: rgba(103,245,138,.05); }
-    .index-list a.restricted { color: rgba(255,92,92,.58); }
 
-    .clearance-card { margin-top: 18px; padding: 14px; border: 1px solid var(--danger-line); background: repeating-linear-gradient(-45deg, rgba(255,92,92,.035) 0 6px, transparent 6px 12px); }
-    .clearance-card strong { display: block; color: var(--red); font-family: var(--display); font-size: 1.8rem; line-height: 1; }
-    .clearance-card span { color: var(--muted); font-size: 9px; letter-spacing: .1em; }
+    .index-panel__label {
+      margin: 0 0 15px;
+      color: var(--muted);
+      font-size: 9px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+    }
 
-    .dossier { display: grid; gap: 12px; min-width: 0; }
+    .index-list {
+      display: grid;
+      gap: 2px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .index-list a {
+      display: grid;
+      grid-template-columns: 26px 1fr;
+      gap: 8px;
+      padding: 7px 6px;
+      color: var(--faint);
+      text-decoration: none;
+      border-left: 1px solid transparent;
+      font-size: 10px;
+      line-height: 1.35;
+      transition: var(--ease);
+    }
+
+    .index-list a:hover,
+    .index-list a.active {
+      color: var(--green);
+      border-left-color: var(--green);
+      background: rgba(103, 245, 138, .05);
+    }
+
+    .index-list a.restricted {
+      color: rgba(255, 92, 92, .58);
+    }
+
+    .clearance-card {
+      margin-top: 18px;
+      padding: 14px;
+      border: 1px solid var(--danger-line);
+      background: repeating-linear-gradient(-45deg, rgba(255, 92, 92, .035) 0 6px, transparent 6px 12px);
+    }
+
+    .clearance-card strong {
+      display: block;
+      color: var(--red);
+      font-family: var(--display);
+      font-size: 1.8rem;
+      line-height: 1;
+    }
+
+    .clearance-card span {
+      color: var(--muted);
+      font-size: 9px;
+      letter-spacing: .1em;
+    }
+
+    .dossier {
+      display: grid;
+      gap: 12px;
+      min-width: 0;
+    }
 
     .section {
       content-visibility: auto;
@@ -839,21 +1018,35 @@
       transform: translateY(18px);
       transition: opacity 500ms ease, transform 500ms ease, border-color 0.3s ease, box-shadow 0.3s ease;
     }
-    .section.in-view { opacity: 1; transform: none; }
+
+    .section.in-view {
+      opacity: 1;
+      transform: none;
+    }
+
     .section:hover {
       border-color: rgba(0, 255, 65, 0.35);
       box-shadow: 0 0 8px rgba(0, 255, 65, 0.08), inset 0 0 8px rgba(0, 255, 65, 0.02);
     }
+
     .section:hover .section__title {
       color: var(--green-hot);
       text-shadow: 0 0 15px rgba(0, 255, 65, 0.3);
     }
+
     .section:hover .section__number {
       color: var(--green-hot);
       text-shadow: 0 0 20px rgba(0, 255, 65, 0.4);
     }
-    .section.is-match { border-color: var(--cyan); box-shadow: 0 0 0 1px rgba(134,231,234,.2); }
-    .section.is-hidden-by-search { display: none; }
+
+    .section.is-match {
+      border-color: var(--cyan);
+      box-shadow: 0 0 0 1px rgba(134, 231, 234, .2);
+    }
+
+    .section.is-hidden-by-search {
+      display: none;
+    }
 
     .section__toggle {
       position: relative;
@@ -869,32 +1062,87 @@
       background: transparent;
       cursor: pointer;
     }
-    .section__toggle::after { content: "+"; color: var(--muted); font-size: 22px; text-align: center; transition: transform var(--ease), color var(--ease); }
-    .section__toggle[aria-expanded="true"]::after { color: var(--green); transform: rotate(45deg); }
-    .section__number { color: var(--cyan); font-family: var(--display); font-size: 2rem; font-weight: 700; line-height: 1; }
-    .section__title { display: block; color: #a9f3b8; font-family: var(--display); font-size: clamp(1rem, 2vw, 1.25rem); font-weight: 600; line-height: 1.1; letter-spacing: .07em; text-transform: uppercase; }
-    .section__class { display: block; margin-top: 5px; color: var(--faint); font-size: 8px; letter-spacing: .16em; text-transform: uppercase; }
+
+    .section__toggle::after {
+      content: "+";
+      color: var(--muted);
+      font-size: 22px;
+      text-align: center;
+      transition: transform var(--ease), color var(--ease);
+    }
+
+    .section__toggle[aria-expanded="true"]::after {
+      color: var(--green);
+      transform: rotate(45deg);
+    }
+
+    .section__number {
+      color: var(--cyan);
+      font-family: var(--display);
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .section__title {
+      display: block;
+      color: #a9f3b8;
+      font-family: var(--display);
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+
+    .section__class {
+      display: block;
+      margin-top: 5px;
+      color: var(--faint);
+      font-size: 8px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
 
     .section__body {
       display: grid;
       grid-template-rows: 0fr;
       border-top: 0 solid var(--line);
-      transition: grid-template-rows 420ms cubic-bezier(.2,.8,.2,1), border-width var(--ease);
+      transition: grid-template-rows 420ms cubic-bezier(.2, .8, .2, 1), border-width var(--ease);
     }
-    .section__body > div { min-height: 0; overflow: hidden; }
-    .section__toggle[aria-expanded="true"] + .section__body { grid-template-rows: 1fr; border-top-width: 1px; }
-    .section__content { padding: clamp(18px, 3vw, 30px); }
+
+    .section__body>div {
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    .section__toggle[aria-expanded="true"]+.section__body {
+      grid-template-rows: 1fr;
+      border-top-width: 1px;
+    }
+
+    .section__content {
+      padding: clamp(18px, 3vw, 30px);
+    }
 
     .record {
       display: grid;
       grid-template-columns: 70px minmax(0, 1fr);
       gap: 12px;
       padding: 15px 0;
-      border-bottom: 1px solid rgba(103,245,138,.1);
+      border-bottom: 1px solid rgba(103, 245, 138, .1);
       text-align: left;
     }
-    .record:first-child { padding-top: 0; }
-    .record:last-child { padding-bottom: 0; border-bottom: 0; }
+
+    .record:first-child {
+      padding-top: 0;
+    }
+
+    .record:last-child {
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+
     .record__label {
       margin: 0;
       color: var(--cyan);
@@ -904,26 +1152,87 @@
       text-transform: uppercase;
       text-align: left;
     }
+
     .record__value {
       margin: 0;
       color: var(--muted);
       text-align: left;
     }
-    .record__value strong { color: var(--green); font-weight: 600; }
-    .record__value ul { margin: 8px 0 0; padding-left: 18px; }
-    .record__value li { margin: 5px 0; }
-    mark { padding: 0 2px; color: var(--ink); background: var(--cyan); }
 
-    .metric-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-top: 12px; }
-    .metric { padding: 12px; border: 1px solid rgba(134,231,234,.17); background: rgba(134,231,234,.035); }
-    .metric span { display: block; color: var(--faint); font-size: 8px; letter-spacing: .08em; }
-    .metric strong { display: block; margin-top: 3px; color: var(--cyan); font-family: var(--display); font-size: 1.55rem; line-height: 1; }
+    .record__value strong {
+      color: var(--green);
+      font-weight: 600;
+    }
 
-    .section--redacted { border-color: rgba(255,92,92,.22); }
-    .section--redacted:hover { border-color: var(--danger-line); }
-    .section--redacted .section__number, .section--redacted .section__title { color: var(--red); }
-    .section--redacted .section__toggle::before { position: absolute; inset: 0 auto 0 0; width: 3px; content: ""; background: var(--red); opacity: .7; }
-    .section--redacted .section__class { color: rgba(255,92,92,.58); }
+    .record__value ul {
+      margin: 8px 0 0;
+      padding-left: 18px;
+    }
+
+    .record__value li {
+      margin: 5px 0;
+    }
+
+    mark {
+      padding: 0 2px;
+      color: var(--ink);
+      background: var(--cyan);
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .metric {
+      padding: 12px;
+      border: 1px solid rgba(134, 231, 234, .17);
+      background: rgba(134, 231, 234, .035);
+    }
+
+    .metric span {
+      display: block;
+      color: var(--faint);
+      font-size: 8px;
+      letter-spacing: .08em;
+    }
+
+    .metric strong {
+      display: block;
+      margin-top: 3px;
+      color: var(--cyan);
+      font-family: var(--display);
+      font-size: 1.55rem;
+      line-height: 1;
+    }
+
+    .section--redacted {
+      border-color: rgba(255, 92, 92, .22);
+    }
+
+    .section--redacted:hover {
+      border-color: var(--danger-line);
+    }
+
+    .section--redacted .section__number,
+    .section--redacted .section__title {
+      color: var(--red);
+    }
+
+    .section--redacted .section__toggle::before {
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 3px;
+      content: "";
+      background: var(--red);
+      opacity: .7;
+    }
+
+    .section--redacted .section__class {
+      color: rgba(255, 92, 92, .58);
+    }
 
     .redaction {
       position: relative;
@@ -932,27 +1241,92 @@
       overflow: hidden;
       cursor: not-allowed;
       background:
-        repeating-linear-gradient(-45deg, rgba(255,92,92,.025) 0 7px, transparent 7px 14px),
+        repeating-linear-gradient(-45deg, rgba(255, 92, 92, .025) 0 7px, transparent 7px 14px),
         rgba(5, 9, 14, .74);
     }
-    .redaction::before { position: absolute; inset: 0; content: ""; background: linear-gradient(90deg, transparent, rgba(255,92,92,.05), transparent); transform: translateX(-100%); }
-    .redaction:hover::before { animation: breachScan 1s ease; }
-    .redaction__stamp { position: absolute; top: 50%; left: 50%; padding: 8px 16px; color: var(--red); border: 2px solid currentColor; font-family: var(--display); font-size: clamp(1.2rem, 4vw, 2.1rem); font-weight: 700; letter-spacing: .12em; transform: translate(-50%, -50%) rotate(-4deg); opacity: .86; white-space: nowrap; }
-    .redaction__lines { display: grid; gap: 11px; opacity: .3; }
-    .redaction__line { height: 13px; background: #020304; box-shadow: 0 0 0 1px rgba(255,255,255,.025); }
-    .redaction__line:nth-child(2) { width: 81%; }
-    .redaction__line:nth-child(3) { width: 93%; }
-    .redaction__line:nth-child(4) { width: 64%; }
-    .redaction__line:nth-child(5) { width: 76%; }
-    .redaction__code { position: absolute; right: 15px; bottom: 10px; color: rgba(255,92,92,.48); font-size: 9px; }
 
-    .section--unlocked { border-color: rgba(226,182,61,.4); }
-    .section--unlocked .section__number, .section--unlocked .section__title { color: var(--amber); }
-    .unlocked-record { color: #b6a883; }
+    .redaction::before {
+      position: absolute;
+      inset: 0;
+      content: "";
+      background: linear-gradient(90deg, transparent, rgba(255, 92, 92, .05), transparent);
+      transform: translateX(-100%);
+    }
+
+    .redaction:hover::before {
+      animation: breachScan 1s ease;
+    }
+
+    .redaction__stamp {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      padding: 8px 16px;
+      color: var(--red);
+      border: 2px solid currentColor;
+      font-family: var(--display);
+      font-size: clamp(1.2rem, 4vw, 2.1rem);
+      font-weight: 700;
+      letter-spacing: .12em;
+      transform: translate(-50%, -50%) rotate(-4deg);
+      opacity: .86;
+      white-space: nowrap;
+    }
+
+    .redaction__lines {
+      display: grid;
+      gap: 11px;
+      opacity: .3;
+    }
+
+    .redaction__line {
+      height: 13px;
+      background: #020304;
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, .025);
+    }
+
+    .redaction__line:nth-child(2) {
+      width: 81%;
+    }
+
+    .redaction__line:nth-child(3) {
+      width: 93%;
+    }
+
+    .redaction__line:nth-child(4) {
+      width: 64%;
+    }
+
+    .redaction__line:nth-child(5) {
+      width: 76%;
+    }
+
+    .redaction__code {
+      position: absolute;
+      right: 15px;
+      bottom: 10px;
+      color: rgba(255, 92, 92, .48);
+      font-size: 9px;
+    }
+
+    .section--unlocked {
+      border-color: rgba(226, 182, 61, .4);
+    }
+
+    .section--unlocked .section__number,
+    .section--unlocked .section__title {
+      color: var(--amber);
+    }
+
+    .unlocked-record {
+      color: #b6a883;
+    }
+
     .section--unlocked .record {
       grid-template-columns: 180px minmax(0, 1fr);
       gap: 18px;
     }
+
     .section--unlocked .record__label {
       color: var(--amber);
       font-size: 12px;
@@ -964,14 +1338,50 @@
       padding: clamp(22px, 5vw, 44px);
       text-align: center;
       border: 1px solid var(--danger-line);
-      background: linear-gradient(90deg, rgba(255,92,92,.05), transparent 25% 75%, rgba(255,92,92,.05));
+      background: linear-gradient(90deg, rgba(255, 92, 92, .05), transparent 25% 75%, rgba(255, 92, 92, .05));
     }
-    .restriction__title { margin: 0; color: var(--red); font-family: var(--display); font-size: clamp(1.5rem, 4vw, 3.4rem); line-height: 1; letter-spacing: .12em; text-transform: uppercase; }
-    .restriction p { max-width: 700px; margin: 15px auto 0; color: var(--muted); font-size: 11px; }
 
-    .footer { display: flex; justify-content: space-between; gap: 20px; align-items: flex-end; padding: 26px 4px 0; color: var(--faint); font-size: 9px; letter-spacing: .11em; text-transform: uppercase; }
-    .footer strong { color: var(--red); }
-    .level-badge { display: inline-grid; place-items: center; min-width: 82px; padding: 6px 10px; color: var(--red); border: 1px solid var(--danger-line); }
+    .restriction__title {
+      margin: 0;
+      color: var(--red);
+      font-family: var(--display);
+      font-size: clamp(1.5rem, 4vw, 3.4rem);
+      line-height: 1;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .restriction p {
+      max-width: 700px;
+      margin: 15px auto 0;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: flex-end;
+      padding: 26px 4px 0;
+      color: var(--faint);
+      font-size: 9px;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+    }
+
+    .footer strong {
+      color: var(--red);
+    }
+
+    .level-badge {
+      display: inline-grid;
+      place-items: center;
+      min-width: 82px;
+      padding: 6px 10px;
+      color: var(--red);
+      border: 1px solid var(--danger-line);
+    }
 
     .action-log {
       margin-top: 20px;
@@ -985,33 +1395,41 @@
       scrollbar-width: thin;
       scrollbar-color: var(--line) transparent;
     }
+
     .action-log::-webkit-scrollbar {
       width: 4px;
     }
+
     .action-log::-webkit-scrollbar-track {
       background: transparent;
     }
+
     .action-log::-webkit-scrollbar-thumb {
       background: var(--line-strong);
       border-radius: 4px;
     }
+
     .action-log-entry {
       padding: 2px 0;
-      border-bottom: 1px solid rgba(103,245,138,.05);
+      border-bottom: 1px solid rgba(103, 245, 138, .05);
       color: var(--muted);
       font-family: var(--mono);
       letter-spacing: 0.02em;
     }
+
     .action-log-entry .time {
       color: var(--faint);
       margin-right: 12px;
     }
+
     .action-log-entry .action {
       color: var(--green);
     }
+
     .action-log-entry .action.error {
       color: var(--red);
     }
+
     .action-log-entry .action.success {
       color: var(--green-hot);
     }
@@ -1024,29 +1442,104 @@
       background: #0a1019;
       box-shadow: 0 30px 100px #000;
     }
-    .modal::backdrop { background: rgba(2, 5, 9, .84); backdrop-filter: blur(5px); }
-    .modal__header { display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; color: var(--red); border-bottom: 1px solid var(--danger-line); background: rgba(255,92,92,.05); font-size: 10px; letter-spacing: .1em; }
-    .modal__close { width: 30px; height: 30px; border: 0; background: transparent; cursor: pointer; font-size: 20px; }
-    .modal__body { padding: clamp(22px, 5vw, 38px); }
-    .modal__title { margin: 0 0 14px; color: var(--red); font-family: var(--display); font-size: 2rem; line-height: 1; letter-spacing: .06em; }
-    .modal__copy { color: var(--muted); }
-    .password-form { display: grid; grid-template-columns: 1fr auto; gap: 8px; margin-top: 24px; }
-    .password-form input { min-width: 0; padding: 12px; color: var(--green); border: 1px solid var(--line); background: #060a10; }
-    .password-form button { padding: 12px 16px; border: 1px solid var(--line-strong); background: rgba(103,245,138,.08); cursor: pointer; }
-    .form-message { min-height: 1.5em; margin: 10px 0 0; color: var(--red); font-size: 10px; }
-    .breach-log { display: none; margin: 20px 0 0; padding: 14px; color: var(--green); border-left: 2px solid var(--green); background: #060a10; font-size: 10px; white-space: pre-line; }
-    .breach-log.active { display: block; }
+
+    .modal::backdrop {
+      background: rgba(2, 5, 9, .84);
+      backdrop-filter: blur(5px);
+    }
+
+    .modal__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 16px;
+      color: var(--red);
+      border-bottom: 1px solid var(--danger-line);
+      background: rgba(255, 92, 92, .05);
+      font-size: 10px;
+      letter-spacing: .1em;
+    }
+
+    .modal__close {
+      width: 30px;
+      height: 30px;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    .modal__body {
+      padding: clamp(22px, 5vw, 38px);
+    }
+
+    .modal__title {
+      margin: 0 0 14px;
+      color: var(--red);
+      font-family: var(--display);
+      font-size: 2rem;
+      line-height: 1;
+      letter-spacing: .06em;
+    }
+
+    .modal__copy {
+      color: var(--muted);
+    }
+
+    .password-form {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px;
+      margin-top: 24px;
+    }
+
+    .password-form input {
+      min-width: 0;
+      padding: 12px;
+      color: var(--green);
+      border: 1px solid var(--line);
+      background: #060a10;
+    }
+
+    .password-form button {
+      padding: 12px 16px;
+      border: 1px solid var(--line-strong);
+      background: rgba(103, 245, 138, .08);
+      cursor: pointer;
+    }
+
+    .form-message {
+      min-height: 1.5em;
+      margin: 10px 0 0;
+      color: var(--red);
+      font-size: 10px;
+    }
+
+    .breach-log {
+      display: none;
+      margin: 20px 0 0;
+      padding: 14px;
+      color: var(--green);
+      border-left: 2px solid var(--green);
+      background: #060a10;
+      font-size: 10px;
+      white-space: pre-line;
+    }
+
+    .breach-log.active {
+      display: block;
+    }
 
     body.high-contrast {
       --ink: #000000;
       --ink-elevated: #050505;
-      --panel: rgba(0,0,0,.96);
+      --panel: rgba(0, 0, 0, .96);
       --panel-solid: #000000;
       --green: #00ff41;
       --cyan: #8dfcff;
       --muted: #d2dde4;
       --faint: #94a6b2;
-      --line: rgba(0,255,65,.5);
+      --line: rgba(0, 255, 65, .5);
     }
 
     .matrix-rain {
@@ -1060,6 +1553,7 @@
       opacity: 0.06;
       overflow: hidden;
     }
+
     .matrix-rain span {
       position: absolute;
       color: var(--green);
@@ -1068,43 +1562,134 @@
       animation: matrixFall linear infinite;
       text-shadow: 0 0 5px var(--green);
     }
+
     @keyframes matrixFall {
-      0% { transform: translateY(-100vh) rotate(0deg); opacity: 0.8; }
-      100% { transform: translateY(100vh) rotate(360deg); opacity: 0.2; }
+      0% {
+        transform: translateY(-100vh) rotate(0deg);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0.2;
+      }
     }
 
-    @keyframes pulse { 50% { opacity: .3; transform: scale(.72); } }
-    @keyframes gridDrift { to { background-position: 42px 42px; } }
-    @keyframes headerScan { to { transform: translateY(240%); } }
-    @keyframes dataRun { 0%,100% { transform: translateX(-110%); } 50% { transform: translateX(270%); } }
-    @keyframes breachScan { to { transform: translateX(100%); } }
-    @keyframes glitchA {
-      0%, 85%, 100% { opacity: 0; clip-path: inset(0 0 0 0); }
-      15%, 30% { opacity: .65; clip-path: inset(10% 0 60%); }
-      45%, 60% { opacity: .55; clip-path: inset(70% 0 20%); }
+    @keyframes pulse {
+      50% {
+        opacity: .3;
+        transform: scale(.72);
+      }
     }
+
+    @keyframes gridDrift {
+      to {
+        background-position: 42px 42px;
+      }
+    }
+
+    @keyframes headerScan {
+      to {
+        transform: translateY(240%);
+      }
+    }
+
+    @keyframes dataRun {
+      0%,
+      100% {
+        transform: translateX(-110%);
+      }
+      50% {
+        transform: translateX(270%);
+      }
+    }
+
+    @keyframes breachScan {
+      to {
+        transform: translateX(100%);
+      }
+    }
+
+    @keyframes glitchA {
+      0%,
+      85%,
+      100% {
+        opacity: 0;
+        clip-path: inset(0 0 0 0);
+      }
+      15%,
+      30% {
+        opacity: .65;
+        clip-path: inset(10% 0 60%);
+      }
+      45%,
+      60% {
+        opacity: .55;
+        clip-path: inset(70% 0 20%);
+      }
+    }
+
     @keyframes glitchB {
-      0%, 80%, 100% { opacity: 0; }
-      10%, 25% { opacity: .55; clip-path: inset(40% 0 30%); }
-      50%, 70% { opacity: .5; clip-path: inset(5% 0 75%); }
+      0%,
+      80%,
+      100% {
+        opacity: 0;
+      }
+      10%,
+      25% {
+        opacity: .55;
+        clip-path: inset(40% 0 30%);
+      }
+      50%,
+      70% {
+        opacity: .5;
+        clip-path: inset(5% 0 75%);
+      }
     }
 
     @media (max-width: 1024px) {
-      .archive-layout { grid-template-columns: 220px minmax(0, 1fr); }
-      .metric-grid { grid-template-columns: repeat(3, 1fr); }
-      .index-list a { font-size: 9px; }
-      .masthead::before { left: 58%; }
-      .command-rail { grid-template-columns: minmax(140px, 1fr) auto auto auto auto; }
+      .archive-layout {
+        grid-template-columns: 220px minmax(0, 1fr);
+      }
+      .metric-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .index-list a {
+        font-size: 9px;
+      }
+      .masthead::before {
+        left: 58%;
+      }
+      .command-rail {
+        grid-template-columns: minmax(140px, 1fr) auto auto auto auto;
+      }
     }
 
     @media (max-width: 767px) {
-      body { font-size: 12px; }
-      .shell { width: min(100% - 16px, 680px); padding-top: 8px; }
-      .masthead { grid-template-columns: 1fr; min-height: auto; padding: 24px 18px; }
-      .masthead::before { display: none; }
-      .brand__title { font-size: clamp(2.45rem, 15vw, 4.6rem); line-height: .82; }
-      .meta { min-width: 0; }
-      .meta__row { grid-template-columns: 80px 1fr; }
+      body {
+        font-size: 12px;
+      }
+      .shell {
+        width: min(100% - 16px, 680px);
+        padding-top: 8px;
+      }
+      .masthead {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        padding: 24px 18px;
+      }
+      .masthead::before {
+        display: none;
+      }
+      .brand__title {
+        font-size: clamp(2.45rem, 15vw, 4.6rem);
+        line-height: .82;
+      }
+      .meta {
+        min-width: 0;
+      }
+      .meta__row {
+        grid-template-columns: 80px 1fr;
+      }
       .nav-tabs {
         gap: 3px;
         padding: 8px 10px;
@@ -1118,47 +1703,177 @@
         white-space: nowrap;
         flex-shrink: 0;
       }
-      .command-rail { position: relative; top: auto; grid-template-columns: 1fr 1fr; gap: 4px; }
-      .search-wrap { grid-column: 1 / -1; }
-      .control { padding-inline: 6px; font-size: 8px; min-height: 32px; }
-      .status-indicator { font-size: 8px; }
-      .auth-banner { grid-template-columns: 1fr auto; }
-      .auth-banner__line { display: none; }
-      .archive-layout { display: block; }
-      .index-panel { position: relative; top: auto; margin-bottom: 12px; }
-      .index-list { grid-template-columns: repeat(4, 1fr); }
-      .index-list a { display: block; padding: 8px 4px; text-align: center; border: 1px solid rgba(103,245,138,.1); }
-      .index-list a span:last-child { display: none; }
-      .clearance-card { display: flex; justify-content: space-between; align-items: center; }
-      .section__toggle { grid-template-columns: 40px minmax(0, 1fr) 22px; gap: 10px; min-height: 70px; padding: 10px 12px; }
-      .section__number { font-size: 1.55rem; }
-      .record { grid-template-columns: 1fr; gap: 7px; }
-      .record__label { text-align: left; }
-      .metric-grid { grid-template-columns: repeat(2, 1fr); }
-      .redaction { min-height: 190px; padding: 18px; }
-      .redaction__stamp { white-space: normal; text-align: center; }
-      .password-form { grid-template-columns: 1fr; }
-      .footer { align-items: flex-start; flex-wrap: wrap; gap: 8px; }
-      .page-title { font-size: 1.6rem; }
-      .page-content-inner .record { grid-template-columns: 1fr; }
+      .command-rail {
+        position: relative;
+        top: auto;
+        grid-template-columns: 1fr 1fr;
+        gap: 4px;
+      }
+      .search-wrap {
+        grid-column: 1 / -1;
+      }
+      .control {
+        padding-inline: 6px;
+        font-size: 8px;
+        min-height: 32px;
+      }
+      .status-indicator {
+        font-size: 8px;
+      }
+      .auth-banner {
+        grid-template-columns: 1fr auto;
+      }
+      .auth-banner__line {
+        display: none;
+      }
+      .archive-layout {
+        display: block;
+      }
+      .index-panel {
+        position: relative;
+        top: auto;
+        margin-bottom: 12px;
+      }
+      .index-list {
+        grid-template-columns: repeat(4, 1fr);
+      }
+      .index-list a {
+        display: block;
+        padding: 8px 4px;
+        text-align: center;
+        border: 1px solid rgba(103, 245, 138, .1);
+      }
+      .index-list a span:last-child {
+        display: none;
+      }
+      .clearance-card {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .section__toggle {
+        grid-template-columns: 40px minmax(0, 1fr) 22px;
+        gap: 10px;
+        min-height: 70px;
+        padding: 10px 12px;
+      }
+      .section__number {
+        font-size: 1.55rem;
+      }
+      .record {
+        grid-template-columns: 1fr;
+        gap: 7px;
+      }
+      .record__label {
+        text-align: left;
+      }
+      .metric-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .redaction {
+        min-height: 190px;
+        padding: 18px;
+      }
+      .redaction__stamp {
+        white-space: normal;
+        text-align: center;
+      }
+      .password-form {
+        grid-template-columns: 1fr;
+      }
+      .footer {
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .page-title {
+        font-size: 1.6rem;
+      }
+      .page-content-inner .record {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
-      #boot::before, .boot-terminal, .status-light, .input-cursor, .terminal-shake, .matrix-rain span { animation: none !important; }
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+      #boot::before,
+      .boot-terminal,
+      .status-light,
+      .input-cursor,
+      .terminal-shake,
+      .matrix-rain span {
+        animation: none !important;
+      }
     }
 
     @media print {
-      :root { color-scheme: light; }
-      body { color: #111; background: #fff; font-size: 10pt; }
-      body::before, body::after, .noise, #boot, .command-rail, .index-panel, .auth-banner, .modal, .action-log, .matrix-rain { display: none !important; }
-      .shell { width: 100%; padding: 0; opacity: 1; transform: none; }
-      .masthead, .section, .restriction { color: #111; border-color: #444; background: #fff; box-shadow: none; break-inside: avoid; }
-      .brand__title, .brand__subtitle, .section__title, .section__number, .record__label, .record__value, .record__value strong { color: #111; text-shadow: none; }
-      .section { opacity: 1; transform: none; }
-      .section__body { grid-template-rows: 1fr !important; border-top-width: 1px; }
-      .redaction { border: 2px solid #000; background: #eee; }
-      .footer { color: #333; }
+      :root {
+        color-scheme: light;
+      }
+      body {
+        color: #111;
+        background: #fff;
+        font-size: 10pt;
+      }
+      body::before,
+      body::after,
+      .noise,
+      #boot,
+      .command-rail,
+      .index-panel,
+      .auth-banner,
+      .modal,
+      .action-log,
+      .matrix-rain {
+        display: none !important;
+      }
+      .shell {
+        width: 100%;
+        padding: 0;
+        opacity: 1;
+        transform: none;
+      }
+      .masthead,
+      .section,
+      .restriction {
+        color: #111;
+        border-color: #444;
+        background: #fff;
+        box-shadow: none;
+        break-inside: avoid;
+      }
+      .brand__title,
+      .brand__subtitle,
+      .section__title,
+      .section__number,
+      .record__label,
+      .record__value,
+      .record__value strong {
+        color: #111;
+        text-shadow: none;
+      }
+      .section {
+        opacity: 1;
+        transform: none;
+      }
+      .section__body {
+        grid-template-rows: 1fr !important;
+        border-top-width: 1px;
+      }
+      .redaction {
+        border: 2px solid #000;
+        background: #eee;
+      }
+      .footer {
+        color: #333;
+      }
     }
   </style>
 </head>
@@ -1227,9 +1942,11 @@
     <!-- ===== НАВИГАЦИОННЫЕ ВКЛАДКИ ===== -->
     <nav class="nav-tabs" aria-label="Навигация по разделам">
       <a href="#page-main" class="nav-tab active" data-page="page-main">Главная страница</a>
-      <a href="#page-rules" class="nav-tab" data-page="page-rules">Правила Отдела СПМГ</a>
-      <a href="#page-events" class="nav-tab" data-page="page-events">Мероприятия</a>
-      <a href="#page-discord" class="nav-tab" data-page="page-discord">Правила Дискорд Сервера</a>
+      <a href="#page-patrol" class="nav-tab" data-page="page-patrol">Патрули</a>
+      <a href="#page-training" class="nav-tab" data-page="page-training">Тренировки</a>
+      <a href="#page-events" class="nav-tab" data-page="page-events">Ивенты</a>
+      <a href="#page-cordon" class="nav-tab" data-page="page-cordon">Оцепление</a>
+      <a href="#page-rules" class="nav-tab" data-page="page-rules">Правила Дискорд</a>
       <a href="#page-norm" class="nav-tab" data-page="page-norm">Норма</a>
       <a href="#page-punishments" class="nav-tab" data-page="page-punishments">Наказания</a>
       <a href="#page-vacations" class="nav-tab" data-page="page-vacations">Отпуска</a>
@@ -1286,6 +2003,7 @@
         </aside>
 
         <div class="dossier" id="dossier">
+          <!-- Устав (разделы 1-13) -->
           <article class="section" id="section-1" data-search="общие положения">
             <button class="section__toggle" type="button" aria-expanded="true" aria-controls="content-1">
               <span class="section__number">01</span>
@@ -1622,180 +2340,285 @@
     <!-- ===== КОНЕЦ СТРАНИЦЫ "ГЛАВНАЯ" ===== -->
 
     <!-- ============================================================
-         СТРАНИЦА 2: ПРАВИЛА ОТДЕЛА СПМГ
+         СТРАНИЦА: ПАТРУЛИ
          ============================================================ -->
-    <div id="page-rules" class="page">
-      <h2 class="page-title">ПРАВИЛА ОТДЕЛА СПМГ</h2>
-      <p class="page-subtitle">Свод правил и норм поведения для сотрудников отдела SPMG</p>
+    <div id="page-patrol" class="page">
+      <h2 class="page-title">ПАТРУЛИ</h2>
+      <p class="page-subtitle">Регламент проведения патрулей отделом SPMG</p>
       <div class="page-content-inner">
         <div class="record">
-          <h2 class="record__label">1.</h2>
-          <p class="record__value">[СЮДА ВСТАВЬ ТЕКСТ ПРАВИЛА 1]</p>
+          <h2 class="record__label">Общее</h2>
+          <div class="record__value">
+            <p><strong>Патруль</strong> — это МП, в котором участвуют от <span class="highlight">3 человек</span> (включая проводящего). Один человек — это сам проводящий, остальные — участники.</p>
+            <p style="margin-top: 10px;">Участники обязаны <strong>выполнять приказы проводящего</strong> без обсуждений.</p>
+            <p style="margin-top: 10px;">Патруль длится минимум <span class="highlight">30 минут</span>, максимум — <span class="highlight">1 час 30 минут</span>.</p>
+          </div>
         </div>
+
+        <hr class="section-divider">
+
         <div class="record">
-          <h2 class="record__label">2.</h2>
-          <p class="record__value">[СЮДА ВСТАВЬ ТЕКСТ ПРАВИЛА 2]</p>
+          <h2 class="record__label">Типы патрулей</h2>
+          <div class="record__value">
+            <p><span class="highlight">1. Свободные</span> — проводящий разрешает идти в любой из секторов комплекса.</p>
+            <p style="margin-top: 8px;"><span class="highlight">2. По секторам</span> — проводящий распределяет участников по секторам. Один может быть поставлен в А-сектор, другого — в любое место из Б-сектора.</p>
+          </div>
         </div>
+
+        <hr class="section-divider">
+
         <div class="record">
-          <h2 class="record__label">3.</h2>
-          <p class="record__value">[СЮДА ВСТАВЬ ТЕКСТ ПРАВИЛА 3]</p>
-        </div>
-        <div class="record">
-          <h2 class="record__label">4.</h2>
-          <p class="record__value">[СЮДА ВСТАВЬ ТЕКСТ ПРАВИЛА 4]</p>
-        </div>
-        <div class="record">
-          <h2 class="record__label">5.</h2>
-          <p class="record__value">[СЮДА ВСТАВЬ ТЕКСТ ПРАВИЛА 5]</p>
+          <h2 class="record__label">Мега-рейд</h2>
+          <div class="record__value">
+            <p>Во время патруля может начаться <span class="warn">мега-рейд</span>. В этот момент проводящий начинает командовать бойцами для отбития рейда, и его приказы становятся <strong>приоритетными</strong>.</p>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- ============================================================
-         СТРАНИЦА 3: МЕРОПРИЯТИЯ
+         СТРАНИЦА: ТРЕНИРОВКИ
+         ============================================================ -->
+    <div id="page-training" class="page">
+      <h2 class="page-title">ТРЕНИРОВКИ</h2>
+      <p class="page-subtitle">Проверка и оттачивание ПВП-навыков</p>
+      <div class="page-content-inner">
+        <div class="record">
+          <h2 class="record__label">Общее</h2>
+          <div class="record__value">
+            <p><strong>Тренировка</strong> — это МП, где проверяются и оттачиваются ваши ПВП навыки.</p>
+            <p style="margin-top: 10px;">Минимальное количество участников: <span class="highlight">4 человека</span> (не включая проводящего).</p>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <div class="record">
+          <h2 class="record__label">1 раунд</h2>
+          <div class="record__value">
+            <p>Игра <span class="highlight">2 на 2</span> с <span class="highlight">10 ОС</span> (возрождений) на карте <span class="highlight">«Меркурий»</span>.</p>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <div class="record">
+          <h2 class="record__label">2 раунд</h2>
+          <div class="record__value">
+            <p>Раунд идёт на усмотрение проводящего. Лимит ОС — <span class="highlight">15</span>. Количество людей — неограниченно, но важен <span class="highlight">баланс</span>.</p>
+            <p style="margin-top: 10px;">Проводящий должен грамотно распределять сильных и слабых. Не стоит ставить сильных против слабых. Исключение — бой между обычными бойцами и бойцами от Севера и т.д.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         СТРАНИЦА: ИВЕНТЫ
          ============================================================ -->
     <div id="page-events" class="page">
-      <h2 class="page-title">МЕРОПРИЯТИЯ</h2>
-      <p class="page-subtitle">Календарь мероприятий и событий отдела SPMG</p>
+      <h2 class="page-title">ИВЕНТЫ</h2>
+      <p class="page-subtitle">Фан-мероприятия для отдыха и развлечения</p>
       <div class="page-content-inner">
         <div class="record">
-          <h2 class="record__label">Мероприятие 1</h2>
-          <p class="record__value">[СЮДА ВСТАВЬ ТЕКСТ О МЕРОПРИЯТИИ 1]</p>
-        </div>
-        <div class="record">
-          <h2 class="record__label">Мероприятие 2</h2>
-          <p class="record__value">[СЮДА ВСТАВЬ ТЕКСТ О МЕРОПРИЯТИИ 2]</p>
-        </div>
-        <div class="record">
-          <h2 class="record__label">Мероприятие 3</h2>
-          <p class="record__value">[СЮДА ВСТАВЬ ТЕКСТ О МЕРОПРИЯТИИ 3]</p>
+          <h2 class="record__label">Общее</h2>
+          <div class="record__value">
+            <p><strong>Ивент</strong> — это фан МП, где люди играют в обычные игры, которые выберет проводящий. Главное — чтобы людям было <span class="highlight">интересно</span>.</p>
+            <p style="margin-top: 10px;">Лимит времени: от <span class="highlight">20 минут</span> до <span class="highlight">1 часа</span>. Время за ивент не дают — это МП для отдыха.</p>
+            <p style="margin-top: 10px;">Минимум должно прийти <span class="highlight">4 человека</span>, включая проводящего.</p>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- ============================================================
-         СТРАНИЦА 4: ПРАВИЛА ДИСКОРД СЕРВЕРА
+         СТРАНИЦА: ОЦЕПЛЕНИЕ
          ============================================================ -->
-    <div id="page-discord" class="page">
-      <h2 class="page-title">ПРАВИЛА ДИСКОРД СЕРВЕРА</h2>
-      <p class="page-subtitle">Правила поведения на официальном Discord-сервере SPMG</p>
+    <div id="page-cordon" class="page">
+      <h2 class="page-title">ОЦЕПЛЕНИЕ</h2>
+      <p class="page-subtitle">Отдельный вид патруля с полной охраной сектора</p>
       <div class="page-content-inner">
         <div class="record">
-          <h2 class="record__label">1.</h2>
-          <p class="record__value">[СЮДА ВСТАВЬ ТЕКСТ ПРАВИЛА 1]</p>
+          <h2 class="record__label">Общее</h2>
+          <div class="record__value">
+            <p><strong>Оцепление</strong> — это отдельный вид патруля, в котором должно быть минимум <span class="highlight">8 человек</span>. Именно столько нужно для оцепления сектора: моста, сектора А, КПП.</p>
+          </div>
         </div>
+
+        <hr class="section-divider">
+
         <div class="record">
-          <h2 class="record__label">2.</h2>
-          <p class="record__value">[СЮДА ВСТАВЬ ТЕКСТ ПРАВИЛА 2]</p>
+          <h2 class="record__label">Порядок проведения</h2>
+          <div class="record__value">
+            <p>Перед проведением оцепления необходимо <span class="highlight">объявить в Рацию</span> о проведении оцепления сектора или участка.</p>
+            <p style="margin-top: 10px;">На оцеплении <span class="highlight">2 сотрудника Aurum</span> проверяют карточки:</p>
+            <ul>
+              <li>1 — входящих в сектор</li>
+              <li>2 — выходящих из сектора</li>
+            </ul>
+            <p style="margin-top: 10px;">Задаются вопросы по категории: <span class="highlight">«Причина входа в [место]»</span> (кроме сектора А).</p>
+            <p style="margin-top: 10px;">Без очереди могут пройти <span class="highlight">Сотрудники Aurum</span>.</p>
+          </div>
         </div>
-        <div class="record">
-          <h2 class="record__label">3.</h2>
-          <p class="record__value">[СЮДА ВСТАВЬ ТЕКСТ ПРАВИЛА 3]</p>
+
+        <div class="note-box">
+          <strong>📌 Примечание:</strong> Подробнее об оцеплениях спрашивайте у Офицеров Отдела.
         </div>
       </div>
     </div>
 
     <!-- ============================================================
-         СТРАНИЦА 5: НОРМА
+         СТРАНИЦА: ПРАВИЛА ДИСКОРД
+         ============================================================ -->
+    <div id="page-rules" class="page">
+      <h2 class="page-title">ПРАВИЛА ДИСКОРД СЕРВЕРА</h2>
+      <p class="page-subtitle">Свод правил поведения на официальном Discord-сервере TFB</p>
+      <div class="page-content-inner">
+        <div class="record">
+          <h2 class="record__label">Раздел 1</h2>
+          <div class="record__value">
+            <p><span class="danger">1.</span> Запрещается всячески спорить с обычным составом — иначе последует <span class="warn">наказание</span>.</p>
+            <p style="margin-top: 10px;"><span class="danger">2.</span> Крайне не советуется спорить с <span class="highlight">офицерами</span>. Вы можете получить от предупреждения до увольнения из ТФБ.</p>
+            <p style="margin-top: 8px; padding-left: 20px; color: var(--faint); font-size: 13px;">Однако, вы имеете право оправдаться перед офицером, если имеете вину перед собой. Вам никто не запрещает оправдываться. Если вам не дают оправдаться — наказание пойдёт офицеру. <span class="warn">Если поступки не имеют оправдания — даже не пытайтесь.</span></p>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <div class="record">
+          <h2 class="record__label">Раздел 2</h2>
+          <div class="record__value">
+            <p><span class="danger">3.</span> Запрещается кидать <span class="danger">NSFW, Свастику, 18+ контент, кровь, гифки с фурри и с сексуальным контентом</span> в любой из чатов Discord-сервера.</p>
+            <p style="margin-top: 10px;"><span class="danger">4.</span> Относитесь к друг другу с <span class="highlight">уважением</span>. Как никак, вы товарищи.</p>
+            <p style="margin-top: 10px;"><span class="danger">5.</span> Не стесняйтесь общаться с людьми как своего, так и других отделов. Заводите друзей, знакомых, связи.</p>
+            <p style="margin-top: 10px;"><span class="danger">6.</span> Не орите в ГЧ (можно, если вы никому не мешаете и для рофла), не перебивайте, не разводите конфликт в ГЧ.</p>
+            <p style="margin-top: 10px;"><span class="highlight">7. Самое важное</span> — не стесняйтесь разговаривать в ГЧ, даже если у вас писклявый/ребячий голос. Вас никто не осуждает. А если кто-то осуждает — его съедят заживо. (Лично <span class="highlight">Сендернас</span>)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         СТРАНИЦА: НОРМА (ЗАГЛУШКА)
          ============================================================ -->
     <div id="page-norm" class="page">
       <h2 class="page-title">НОРМА</h2>
       <p class="page-subtitle">Установленные нормы и стандарты для сотрудников SPMG</p>
       <div class="page-content-inner">
         <div class="record">
-          <h2 class="record__label">Норма 1</h2>
-          <p class="record__value">[СЮДА ВСТАВЬ ТЕКСТ О НОРМЕ 1]</p>
-        </div>
-        <div class="record">
-          <h2 class="record__label">Норма 2</h2>
-          <p class="record__value">[СЮДА ВСТАВЬ ТЕКСТ О НОРМЕ 2]</p>
+          <h2 class="record__label">Информация</h2>
+          <p class="record__value">[СЮДА БУДЕТ ДОБАВЛЕН ТЕКСТ И ИЗОБРАЖЕНИЯ ПО НОРМЕ]</p>
         </div>
       </div>
     </div>
 
     <!-- ============================================================
-         СТРАНИЦА 6: НАКАЗАНИЯ
+         СТРАНИЦА: НАКАЗАНИЯ
          ============================================================ -->
     <div id="page-punishments" class="page">
       <h2 class="page-title">НАКАЗАНИЯ</h2>
-      <p class="page-subtitle">Виды и меры наказаний за нарушения устава и правил SPMG</p>
+      <p class="page-subtitle">Виды наказаний и способы отработки нарушений</p>
       <div class="page-content-inner">
         <div class="record">
-          <h2 class="record__label">Наказание 1</h2>
-          <p class="record__value">[СЮДА ВСТАВЬ ТЕКСТ О НАКАЗАНИИ 1]</p>
+          <h2 class="record__label">Нарушения</h2>
+          <div class="record__value">
+            <p><span class="danger">1.</span> Незнание или несоблюдение ПОВР и правил Virus RP<br>
+            <span class="warn">Наказание:</span> 1-2 страйка.</p>
+            <p style="margin-top: 10px;"><span class="danger">2.</span> Выход из базы без формы (АКА — Морф)<br>
+            <span class="warn">Наказание:</span> 1 выговор.</p>
+            <p style="margin-top: 10px;"><span class="danger">3.</span> Неподчинение, неуважение к Офицерам<br>
+            <span class="warn">Наказание:</span> 1 выговор — 1 страйк.</p>
+            <p style="margin-top: 10px;"><span class="danger">4.</span> Оскорбление своих товарищей<br>
+            <span class="warn">Наказание:</span> 1 страйк.</p>
+            <p style="margin-top: 10px;"><span class="danger">5.</span> Разжигание, поддержка конфликта<br>
+            <span class="warn">Наказание:</span> 1 выговор — 2 страйка.</p>
+            <p style="margin-top: 10px;"><span class="danger">6.</span> Непослушание приказам проводящего (если приказ не нарушает правил)<br>
+            <span class="warn">Наказание:</span> 1 страйк.</p>
+            <p style="margin-top: 10px;"><span class="danger">7.</span> Крики, перебивание в ГЧ<br>
+            <span class="warn">Наказание:</span> 1 выговор — 1 страйк.</p>
+          </div>
         </div>
+
+        <hr class="section-divider">
+
         <div class="record">
-          <h2 class="record__label">Наказание 2</h2>
-          <p class="record__value">[СЮДА ВСТАВЬ ТЕКСТ О НАКАЗАНИИ 2]</p>
-        </div>
-        <div class="record">
-          <h2 class="record__label">Наказание 3</h2>
-          <p class="record__value">[СЮДА ВСТАВЬ ТЕКСТ О НАКАЗАНИИ 3]</p>
+          <h2 class="record__label">Отработка</h2>
+          <div class="record__value">
+            <p><span class="highlight">1. Ожидание.</span> Ждать 30 дней (месяц) без нарушений. Если получите ещё одно нарушение — таймер сбросится. Для выговора — <span class="highlight">2 недели</span>.</p>
+            <p style="margin-top: 10px;"><span class="highlight">2. Проявление.</span> Показать себя перед вышестоящими отдела — помочь или произвести хорошее впечатление. Нужно постараться.</p>
+            <p style="margin-top: 10px;"><span class="highlight">3. Покупка.</span> Накопить валюту отдела и снять страйк.</p>
+            <p style="margin-top: 10px;"><span class="highlight">4. Отработка от офицера.</span> Даётся лично офицером в зависимости от вас. Будет сложно отработать.</p>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- ============================================================
-         СТРАНИЦА 7: ОТПУСКА
+         СТРАНИЦА: ОТПУСКА
          ============================================================ -->
     <div id="page-vacations" class="page">
       <h2 class="page-title">ОТПУСКА</h2>
-      <p class="page-subtitle">Порядок оформления и предоставления отпусков сотрудникам SPMG</p>
+      <p class="page-subtitle">Порядок оформления и правила предоставления отпусков</p>
       <div class="page-content-inner">
         <div class="record">
-          <h2 class="record__label">Отпуск 1</h2>
-          <p class="record__value">[СЮДА ВСТАВЬ ТЕКСТ ОБ ОТПУСКЕ 1]</p>
+          <h2 class="record__label">Правила отпуска</h2>
+          <div class="record__value">
+            <p><span class="highlight">1.</span> Если вы вступили во фракцию меньше 2 недель назад — отпуск <span class="danger">недоступен</span>. Исключение — уважительная причина (рассматривается офицерами).</p>
+            <p style="margin-top: 10px;"><span class="highlight">2.</span> Отпуск можно брать только <span class="warn">раз в 2 недели</span>. Исключение — уважительная причина.</p>
+            <p style="margin-top: 10px;"><span class="highlight">3.</span> Отпуск можно брать максимум на <span class="highlight">месяц</span>. Исключение — уважительная причина.</p>
+            <p style="margin-top: 10px;"><span class="highlight">4.</span> Уважительная причина должна быть подтверждена доказательствами: справка из больницы, фото повреждений и т.д.</p>
+            <p style="margin-top: 10px;"><span class="highlight">5.</span> При отпуске более 25 дней, роль отдела снимается до окончания отпуска (человек числится в таблице активности).</p>
+          </div>
         </div>
+
+        <hr class="section-divider">
+
         <div class="record">
-          <h2 class="record__label">Отпуск 2</h2>
-          <p class="record__value">[СЮДА ВСТАВЬ ТЕКСТ ОБ ОТПУСКЕ 2]</p>
+          <h2 class="record__label">Причины отпуска</h2>
+          <div class="record__value">
+            <p><span class="highlight">1.</span> Выгорание — усталость от игры или эмоциональное выгорание.</p>
+            <p style="margin-top: 10px;"><span class="highlight">2.</span> Травмы.</p>
+            <p style="margin-top: 10px;"><span class="highlight">3.</span> Личная жизнь, семья, случаи в вашей жизни или семьи.</p>
+            <p style="margin-top: 10px;"><span class="highlight">4.</span> Иные причины, не входящие в список. Главное, чтобы офицеры могли понять и принять вашу причину.</p>
+          </div>
+        </div>
+
+        <div class="note-box">
+          <strong>📌 Примечание:</strong> Если вы часто брали отпуск, офицеры могут отклонить ваш отпуск. Исключение — уважительная причина. Если причина неуважительная — отмена.
         </div>
       </div>
     </div>
 
     <!-- ============================================================
-         СТРАНИЦА 8: ИСТОРИЯ КУРАТОРОВ
+         СТРАНИЦА: ИСТОРИЯ КУРАТОРОВ (ЗАГЛУШКА)
          ============================================================ -->
     <div id="page-history" class="page">
       <h2 class="page-title">ИСТОРИЯ КУРАТОРОВ</h2>
       <p class="page-subtitle">Список и история кураторов отдела SPMG</p>
       <div class="page-content-inner">
         <div class="record">
-          <h2 class="record__label">Куратор 1</h2>
-          <p class="record__value">[СЮДА ВСТАВЬ ТЕКСТ О КУРАТОРЕ 1]</p>
-        </div>
-        <div class="record">
-          <h2 class="record__label">Куратор 2</h2>
-          <p class="record__value">[СЮДА ВСТАВЬ ТЕКСТ О КУРАТОРЕ 2]</p>
-        </div>
-        <div class="record">
-          <h2 class="record__label">Куратор 3</h2>
-          <p class="record__value">[СЮДА ВСТАВЬ ТЕКСТ О КУРАТОРЕ 3]</p>
+          <h2 class="record__label">Информация</h2>
+          <p class="record__value">[СЮДА БУДЕТ ДОБАВЛЕН ТЕКСТ ОБ ИСТОРИИ КУРАТОРОВ]</p>
         </div>
       </div>
     </div>
 
     <!-- ============================================================
-         СТРАНИЦА 9: ДОПОЛНИТЕЛЬНО
+         СТРАНИЦА: ДОПОЛНИТЕЛЬНО (ЗАГЛУШКА)
          ============================================================ -->
     <div id="page-additional" class="page">
       <h2 class="page-title">ДОПОЛНИТЕЛЬНО</h2>
       <p class="page-subtitle">Дополнительная информация и материалы</p>
       <div class="page-content-inner">
         <div class="record">
-          <h2 class="record__label">Доп. информация 1</h2>
-          <p class="record__value">[СЮДА ВСТАВЬ ТЕКСТ ДОПОЛНИТЕЛЬНОЙ ИНФОРМАЦИИ 1]</p>
-        </div>
-        <div class="record">
-          <h2 class="record__label">Доп. информация 2</h2>
-          <p class="record__value">[СЮДА ВСТАВЬ ТЕКСТ ДОПОЛНИТЕЛЬНОЙ ИНФОРМАЦИИ 2]</p>
+          <h2 class="record__label">Информация</h2>
+          <p class="record__value">[СЮДА БУДЕТ ДОБАВЛЕНА ДОПОЛНИТЕЛЬНАЯ ИНФОРМАЦИЯ]</p>
         </div>
       </div>
     </div>
 
     <!-- ============================================================
-       ПОДВАЛ И ЛОГ
-       ============================================================ -->
+         ПОДВАЛ И ЛОГ
+         ============================================================ -->
     <footer class="footer">
       <span><strong>УВЕДОМЛЕНИЕ:</strong> ТОЛЬКО ДЛЯ СОТРУДНИКОВ SPMG</span>
       <span class="level-badge">УРОВЕНЬ 1</span>
@@ -2122,9 +2945,11 @@
       const tabs = document.querySelectorAll('.nav-tab');
       const pages = {
         'page-main': document.getElementById('page-main'),
-        'page-rules': document.getElementById('page-rules'),
+        'page-patrol': document.getElementById('page-patrol'),
+        'page-training': document.getElementById('page-training'),
         'page-events': document.getElementById('page-events'),
-        'page-discord': document.getElementById('page-discord'),
+        'page-cordon': document.getElementById('page-cordon'),
+        'page-rules': document.getElementById('page-rules'),
         'page-norm': document.getElementById('page-norm'),
         'page-punishments': document.getElementById('page-punishments'),
         'page-vacations': document.getElementById('page-vacations'),
@@ -2133,23 +2958,18 @@
       };
 
       function switchPage(pageId) {
-        // Скрываем все страницы
         Object.values(pages).forEach(page => {
           if (page) page.classList.remove('active');
         });
-        // Показываем нужную
         if (pages[pageId]) {
           pages[pageId].classList.add('active');
         }
-        // Обновляем активную вкладку
         tabs.forEach(tab => {
           tab.classList.toggle('active', tab.dataset.page === pageId);
         });
-        // Лог
         const tabName = document.querySelector(`.nav-tab[data-page="${pageId}"]`)?.textContent.trim() || pageId;
         addLog(`ПЕРЕХОД НА СТРАНИЦУ: ${tabName}`, '');
         beep(480, 0.025);
-        // Прокрутка наверх
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
 
@@ -2162,7 +2982,7 @@
       });
 
       // ============================================================
-      // JS ДЛЯ ОСНОВНОГО САЙТА (поиск, звук, логи и т.д.)
+      // JS ДЛЯ ОСНОВНОГО САЙТА
       // ============================================================
       const body = document.body;
       const dateOutput = document.getElementById('currentDate');
