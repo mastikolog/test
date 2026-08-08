@@ -1691,6 +1691,25 @@
       color: var(--amber);
     }
 
+    /* ===== УВЕЛИЧЕННЫЙ ОТСТУП ДЛЯ ТЕКСТА ===== */
+    .page-content .section-block .block-body .record .record__value .indent-text {
+      display: block;
+      padding-left: 28px;
+      margin-top: 4px;
+    }
+
+    .page-content .section-block .block-body .record .record__value .indent-text-sm {
+      display: block;
+      padding-left: 20px;
+      margin-top: 2px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .record__value .mt-1 {
+      margin-top: 6px;
+    }
+
     @media (max-width: 1024px) {
       .archive-layout {
         grid-template-columns: 220px minmax(0, 1fr);
@@ -1845,6 +1864,10 @@
       }
       .page-content .section-block .block-number {
         font-size: 1.3rem;
+      }
+      /* ===== МОБИЛЬНЫЙ ОТСТУП ===== */
+      .page-content .section-block .block-body .record .record__value .indent-text {
+        padding-left: 16px;
       }
     }
 
@@ -2854,17 +2877,19 @@
             </div>
             <div class="record">
               <h2 class="record__label">Уменьшение нормы</h2>
-              <p class="record__value">
+              <div class="record__value">
                 <span class="highlight">20 баллов</span>.<br>
-                <strong>Для начального состава:</strong> −1 час, −1 МП.<br>
-                <strong>Для мл. офицерского состава:</strong> −1 час, −1 МП, −1 проведение МП.<br>
-                <span class="warn">Действует 1 раз в 2 недели.</span> Схема: 1 неделя копите, в конце покупаете на следующую. На этой неделе купить следующее уменьшение нельзя.
-              </p>
+                <span class="indent-text"><strong>Для начального состава:</strong> −1 час, −1 МП.</span>
+                <span class="indent-text"><strong>Для мл. офицерского состава:</strong> −1 час, −1 МП, −1 проведение МП.</span>
+                <span class="indent-text"><span class="warn">Действует 1 раз в 2 недели.</span> Схема: 1 неделя копите, в конце покупаете на следующую. На этой неделе купить следующее уменьшение нельзя.</span>
+              </div>
             </div>
             <div class="record" style="border-bottom: none;">
               <h2 class="record__label">Досрочное повышение</h2>
-              <p class="record__value">Повышение на <span class="highlight">1 звание</span>. Стоит <span class="highlight">25 баллов</span>.<br>
-              <span class="warn">Действует только до звания «Капрал»</span>, чтобы в офицеры попадали по навыкам, а не по активу.</p>
+              <div class="record__value">
+                <span>Повышение на <span class="highlight">1 звание</span>. Стоит <span class="highlight">25 баллов</span>.</span>
+                <span class="indent-text"><span class="warn">Действует только до звания «Капрал»</span>, чтобы в офицеры попадали по навыкам, а не по активу.</span>
+              </div>
             </div>
           </div>
         </div>
