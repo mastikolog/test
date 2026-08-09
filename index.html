@@ -382,13 +382,14 @@
       text-shadow: 0 0 5px rgba(255, 51, 77, 0.5);
     }
 
-    .boot-progress-wrap {
-  display: block;
+  .boot-progress-wrap {
+  display: none;
   margin-top: 22px;
 }
 
-    .boot-progress-wrap.visible { display: block; }
-
+.boot-progress-wrap.visible {
+  display: block;
+}
     .decrypt-text {
       margin-bottom: 9px;
       color: var(--green);
