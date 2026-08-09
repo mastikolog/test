@@ -1962,6 +1962,298 @@
         color: #333;
       }
     }
+    /* ============================================================
+   УЛУЧШЕННАЯ ПОДДЕРЖКА ТЕЛЕФОНОВ
+   ============================================================ */
+
+/* Общие правки для маленьких экранов */
+@media (max-width: 768px) {
+  /* Шапка */
+  .masthead {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 18px 16px;
+    min-height: auto;
+  }
+  .brand__title {
+    font-size: clamp(2rem, 12vw, 3.5rem);
+  }
+  .brand__subtitle {
+    font-size: 0.7rem;
+  }
+  .meta {
+    min-width: 0;
+    font-size: 10px;
+  }
+  .meta__row {
+    grid-template-columns: 70px 1fr;
+    gap: 12px;
+    padding: 5px 0;
+  }
+
+  /* Навигационные вкладки */
+  .nav-tabs {
+    gap: 3px;
+    padding: 8px 6px;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .nav-tabs::-webkit-scrollbar {
+    display: none;
+  }
+  .nav-tab {
+    padding: 6px 10px;
+    font-size: 9px;
+    min-width: 60px;
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
+  /* Панель управления */
+  .command-rail {
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    padding: 6px 8px;
+    top: 0;
+    position: relative;
+  }
+  .search-wrap {
+    grid-column: 1 / -1;
+  }
+  .search {
+    min-height: 34px;
+    font-size: 12px;
+    padding: 6px 10px 6px 28px;
+  }
+  .search-wrap::before {
+    left: 8px;
+    font-size: 12px;
+  }
+  .control {
+    min-height: 32px;
+    padding: 4px 8px;
+    font-size: 8px;
+  }
+  .status-indicator {
+    font-size: 8px;
+  }
+
+  /* Auth-баннер */
+  .auth-banner {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    padding: 8px 12px;
+    font-size: 9px;
+    text-align: center;
+  }
+  .auth-banner__line {
+    display: none;
+  }
+  .auth-banner__code {
+    font-size: 8px;
+  }
+
+  /* Основной контент */
+  .archive-layout {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  /* Боковая панель */
+  .index-panel {
+    position: relative;
+    top: auto;
+    padding: 12px;
+    margin-bottom: 8px;
+  }
+  .index-list {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+  }
+  .index-list a {
+    display: block;
+    padding: 6px 4px;
+    text-align: center;
+    font-size: 8px;
+    border-left: none;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+  }
+  .index-list a span:last-child {
+    display: none;
+  }
+  .index-list a:hover {
+    border-color: var(--green);
+  }
+
+  /* Разделы устава */
+  .section__toggle {
+    grid-template-columns: 40px 1fr 24px;
+    gap: 10px;
+    min-height: 56px;
+    padding: 10px 12px;
+  }
+  .section__number {
+    font-size: 1.3rem;
+  }
+  .section__title {
+    font-size: 0.85rem;
+  }
+  .section__class {
+    font-size: 7px;
+  }
+  .section__toggle::after {
+    font-size: 18px;
+  }
+
+  /* Записи */
+  .record {
+    grid-template-columns: 1fr;
+    gap: 4px;
+    padding: 10px 0;
+  }
+  .record__label {
+    font-size: 11px;
+  }
+  .record__value {
+    font-size: 12px;
+  }
+
+  /* Секретные разделы */
+  .redaction {
+    min-height: 120px;
+    padding: 16px;
+  }
+  .redaction__stamp {
+    font-size: 0.9rem;
+    padding: 4px 10px;
+  }
+  .redaction__lines {
+    gap: 6px;
+  }
+  .redaction__line {
+    height: 8px;
+  }
+
+  /* Страницы (Патрули, Тренировки и т.д.) */
+  .page-content .section-block .block-header {
+    grid-template-columns: 40px 1fr;
+    gap: 10px;
+    padding: 10px 12px;
+    min-height: 50px;
+  }
+  .page-content .section-block .block-number {
+    font-size: 1.2rem;
+  }
+  .page-content .section-block .block-title {
+    font-size: 0.85rem;
+  }
+  .page-content .section-block .block-body .record {
+    grid-template-columns: 1fr;
+    gap: 4px;
+    padding: 8px 0;
+  }
+  .page-content .section-block .block-body .record__label {
+    font-size: 11px;
+  }
+  .page-content .section-block .block-body .record__value {
+    font-size: 12px;
+  }
+
+  /* Картинки на страницах */
+  .record > .record__value > img {
+    border-radius: 4px;
+  }
+
+  /* Футер */
+  .footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    padding: 16px 4px 0;
+    font-size: 8px;
+  }
+  .level-badge {
+    min-width: 60px;
+    padding: 4px 8px;
+    font-size: 8px;
+  }
+
+  /* Модальное окно */
+  .modal {
+    width: 95%;
+    max-width: 95%;
+    margin: 10px auto;
+  }
+  .password-form {
+    grid-template-columns: 1fr;
+  }
+  .password-form button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Лог действий */
+  .action-log {
+    max-height: 60px;
+    font-size: 9px;
+    padding: 8px 10px;
+  }
+
+  /* Кнопка "Наверх" */
+  #scrollTopBtn {
+    bottom: 16px;
+    right: 16px;
+    padding: 10px 14px;
+    font-size: 16px;
+  }
+
+  /* Отступы для текста на странице "Норма" */
+  .page-content .section-block .block-body .record .record__value .indent-text {
+    padding-left: 16px;
+  }
+}
+
+/* Очень маленькие телефоны (до 400px) */
+@media (max-width: 400px) {
+  .nav-tab {
+    font-size: 8px;
+    padding: 4px 8px;
+    min-width: 50px;
+  }
+  .brand__title {
+    font-size: clamp(1.6rem, 10vw, 2.5rem);
+  }
+  .control {
+    font-size: 7px;
+    padding: 3px 6px;
+  }
+  .index-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .section__toggle {
+    min-height: 48px;
+    padding: 8px 10px;
+  }
+  .section__number {
+    font-size: 1.1rem;
+  }
+  .section__title {
+    font-size: 0.75rem;
+  }
+  .record__label {
+    font-size: 10px;
+  }
+  .record__value {
+    font-size: 11px;
+  }
+  .auth-banner {
+    font-size: 8px;
+    padding: 6px 10px;
+  }
+}
   </style>
 </head>
 <body>
@@ -2802,12 +3094,12 @@
     <span class="auth-banner__code">СЕССИЯ: SPMG-USER04</span>
   </div>
 
-  <!-- ===== КАРТИНКА (как в Дополнительно) ===== -->
-<div style="display: block; padding: 0; margin: 0;">
-  <div style="display: block; padding: 0; margin: 0; text-align: center;">
-    <img src="https://i.imgur.com/SZr2155.jpeg" alt="Норма" style="width: 100%; max-width: 100%; border: none; border-radius: 4px; display: block; height: auto; box-sizing: border-box; margin: 0;">
+ <!-- ===== КАРТИНКА ===== -->
+  <div class="record" style="display: block; padding: 0; border: none; margin: 0;">
+    <div class="record__value" style="display: block; padding: 0; margin: 0; text-align: center;">
+      <img src="https://i.imgur.com/SZr2155.jpeg" alt="Норма" style="width: 100%; max-width: 100%; border: 1px solid var(--green); border-radius: 4px; display: block; height: auto; box-sizing: border-box; margin: 0;">
+    </div>
   </div>
-</div>
 
   <!-- ===== ТЕКСТ ПОСЛЕ КАРТИНКИ ===== -->
   <div class="page-content">
