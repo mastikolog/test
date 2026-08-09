@@ -3436,18 +3436,17 @@
       }
 
       function finishLaunch() {
-        playSuccessSound();
-        launchMessage.classList.add("visible");
-        setTimeout(() => {
-          boot.classList.add("is-fading");
-          setTimeout(() => {
-            boot.remove();
-            document.body.classList.add("ready");
-            initMatrixRain();
-          }, 950);
-        }, 850);
-      }
-
+  playSuccessSound();
+  launchMessage.classList.add("visible");
+  setTimeout(() => {
+    boot.classList.add("is-fading");
+    setTimeout(() => {
+      boot.remove();
+      document.body.classList.add("ready");
+      initMatrixRain();
+    }, 950);
+  }, 850);
+}
       function triggerGlitchLine() {
         if (!document.body.contains(glitchLine)) return;
         glitchLine.classList.remove("active");
