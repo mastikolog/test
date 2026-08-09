@@ -2279,23 +2279,23 @@
       <div id="bootLog" class="boot-log" aria-live="polite"></div>
 
       <div id="bootPrompt" class="boot-prompt">
-  <span class="prompt-label">КЛЮЧ ДОСТУПА:</span>
-  <span class="input-wrapper">
-    <input id="accessKey" type="password" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Ключ доступа" maxlength="32" />
-    <span class="input-cursor" id="inputCursor"></span>
-  </span>
-  <button id="accessSubmit" style="
-    background: transparent;
-    border: none;
-    color: var(--green);
-    font-size: 24px;
-    cursor: pointer;
-    padding: 4px 8px;
-    margin-left: 6px;
-    transition: all 0.2s ease;
-    opacity: 0.6;
-  ">✔</button>
-</div>
+        <span class="prompt-label">КЛЮЧ ДОСТУПА:</span>
+        <span class="input-wrapper">
+          <input id="accessKey" type="password" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Ключ доступа" maxlength="32" />
+          <span class="input-cursor" id="inputCursor"></span>
+        </span>
+        <button id="accessSubmit" style="
+          background: transparent;
+          border: none;
+          color: var(--green);
+          font-size: 24px;
+          cursor: pointer;
+          padding: 4px 8px;
+          margin-left: 6px;
+          transition: all 0.2s ease;
+          opacity: 0.6;
+        ">✔</button>
+      </div>
 
       <div id="bootFeedback" class="boot-feedback"></div>
       <div id="attemptCounter" class="boot-attempt-counter"></div>
@@ -3829,32 +3829,34 @@ if (submitBtn) {
         }, 1500);
       }
 
-      function beginDecryption() {
-        playSuccessSound();
-        locked = true;
-        accessKey.disabled = true;
-        inputCursor.classList.add('hidden');
-        feedback.textContent = "";
-        progressWrap.classList.add("visible");
+     function beginDecryption() {
+  playSuccessSound();
+  locked = true;
+  accessKey.disabled = true;
+  inputCursor.classList.add('hidden');
+  feedback.textContent = "";
+  
+  // ===== ПОКАЗЫВАЕМ ПРОГРЕСС-БАР ТОЛЬКО ЗДЕСЬ =====
+  progressWrap.classList.add("visible");
 
-        const start = performance.now();
-        const duration = 2500;
+  const start = performance.now();
+  const duration = 2500;
 
-        function updateProgress(now) {
-          const elapsed = now - start;
-          const percentage = Math.min(elapsed / duration * 100, 100);
-          progressBar.style.width = `${percentage}%`;
-          if (progressContainer) {
-            progressContainer.setAttribute("aria-valuenow", Math.round(percentage));
-          }
-          if (percentage < 100) {
-            requestAnimationFrame(updateProgress);
-          } else {
-            finishLaunch();
-          }
-        }
-        requestAnimationFrame(updateProgress);
-      }
+  function updateProgress(now) {
+    const elapsed = now - start;
+    const percentage = Math.min(elapsed / duration * 100, 100);
+    progressBar.style.width = `${percentage}%`;
+    if (progressContainer) {
+      progressContainer.setAttribute("aria-valuenow", Math.round(percentage));
+    }
+    if (percentage < 100) {
+      requestAnimationFrame(updateProgress);
+    } else {
+      finishLaunch();
+    }
+  }
+  requestAnimationFrame(updateProgress);
+}
 
       function finishLaunch() {
   playSuccessSound();
