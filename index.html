@@ -268,14 +268,17 @@
       animation: statusBlink 1.4s steps(2, end) infinite;
     }
 
-    .terminal-body {
-      position: relative;
-      height: calc(100% - 48px);
-      overflow: hidden;
-      font-size: clamp(12px, 1.35vw, 15px);
-      line-height: 1.65;
-      letter-spacing: 0.025em;
-    }
+   .terminal-body {
+  position: relative;
+  height: calc(100% - 40px);
+  overflow: hidden;
+  font-size: clamp(12px, 1.35vw, 15px);
+  line-height: 1.5;
+  letter-spacing: 0.025em;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
 
     .boot-log {
       white-space: pre-wrap;
@@ -422,14 +425,16 @@
     }
 
     .launch-message {
-      display: none;
-      margin-top: 15px;
-      color: var(--green);
-      font-weight: bold;
-      text-shadow: 0 0 5px rgba(117, 255, 154, 0.8), 0 0 15px rgba(117, 255, 154, 0.25);
-    }
+  display: none;
+  margin-top: 6px;
+  color: var(--green);
+  font-weight: bold;
+  text-shadow: 0 0 5px rgba(117, 255, 154, 0.8), 0 0 15px rgba(117, 255, 154, 0.25);
+}
 
-    .launch-message.visible { display: block; }
+.launch-message.visible {
+  display: block;
+}
 
     .glitch-line {
       position: absolute;
