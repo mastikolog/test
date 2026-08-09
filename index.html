@@ -300,17 +300,18 @@
       text-shadow: 0 0 5px rgba(117, 255, 154, 0.6);
     }
 
-    .boot-prompt {
-      display: none;
-      margin-top: 18px;
-      color: var(--green);
-    }
+   .boot-prompt {
+  display: none;
+  margin-top: 8px;
+  color: var(--green);
+}
 
-    .boot-prompt.visible {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-    }
+.boot-prompt.visible {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
 
     .prompt-label {
       flex: 0 0 auto;
@@ -362,29 +363,29 @@
     }
 
     .boot-feedback {
-      min-height: 1.7em;
-      margin-top: 9px;
-      color: var(--red);
-      font-weight: bold;
-      text-shadow: 0 0 5px rgba(255, 51, 77, 0.9), 0 0 16px rgba(255, 51, 77, 0.25);
-    }
+  min-height: 1.4em;
+  margin-top: 6px;
+  color: var(--red);
+  font-weight: bold;
+  text-shadow: 0 0 5px rgba(255, 51, 77, 0.9), 0 0 16px rgba(255, 51, 77, 0.25);
+}
 
     .boot-attempt-counter {
-      margin-top: 6px;
-      color: var(--dim);
-      font-size: 10px;
-      letter-spacing: 0.05em;
-      min-height: 1.2em;
-    }
+  margin-top: 4px;
+  color: var(--dim);
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  min-height: 1.2em;
+}
 
     .boot-attempt-counter.warning {
       color: var(--red);
       text-shadow: 0 0 5px rgba(255, 51, 77, 0.5);
     }
 
-  .boot-progress-wrap {
+ .boot-progress-wrap {
   display: none;
-  margin-top: 22px;
+  margin-top: 10px;
 }
 
 .boot-progress-wrap.visible {
