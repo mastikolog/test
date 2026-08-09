@@ -2676,7 +2676,7 @@
             <div class="record">
               <h2 class="record__label">2.2.</h2>
               <p class="record__value">На оцеплении <span class="highlight">2 сотрудника Aurum</span> проверяют карточки:</p>
-              <p class="record__value" style="padding-left:20px;">— 1 — входящих в сектор<br>— 2 — выходящих из сектора</p>
+              <p class="record__value" style="padding-left:20px;">1 входящих в сектор, 2 выходящих из сектора</p>
             </div>
             <div class="record">
               <h2 class="record__label">2.3.</h2>
@@ -2769,7 +2769,7 @@
             </div>
             <div class="record">
               <h2 class="record__label">2.5.</h2>
-              <p class="record__value"><span class="highlight">Самое важное</span> — не стесняйтесь разговаривать в ГЧ, даже если у вас писклявый/ребячий голос. Вас никто не осуждает. А если кто-то осуждает — его съедят заживо. (Лично <span class="highlight">Сендернас</span>)</p>
+              <p class="record__value"><span class="highlight">Самое важное</span> — не стесняйтесь разговаривать в ГЧ, даже если у вас писклявый/ребячий голос. Вас никто не осуждает. А если кто-то осуждает — его съедят заживо. 
             </div>
           </div>
         </div>
@@ -2833,7 +2833,7 @@
         </div>
         <div class="record" style="border-bottom: none;">
           <h2 class="record__label">1.4.</h2>
-          <p class="record__value">Таблица интерактивна — её можно просматривать и взаимодействовать с листами. Внизу находятся норма и повышения. Благодарим <span class="highlight">Витали</span> за предоставленную таблицу.</p>
+          <p class="record__value">Таблица интерактивна — её можно просматривать и взаимодействовать с листами. Внизу находятся норма и повышения.</p>
         </div>
       </div>
     </div>
@@ -3444,6 +3444,8 @@
       boot.remove();
       document.body.classList.add("ready");
       initMatrixRain();
+      // ===== ПРОКРУТКА НАВЕРХ =====
+      window.scrollTo(0, 0);
     }, 950);
   }, 850);
 }
