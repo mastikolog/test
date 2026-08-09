@@ -2279,25 +2279,23 @@
       <div id="bootLog" class="boot-log" aria-live="polite"></div>
 
       <div id="bootPrompt" class="boot-prompt">
-        <span class="prompt-label">КЛЮЧ ДОСТУПА:</span>
-        <span class="input-wrapper">
-          <input id="accessKey" type="password" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Ключ доступа" maxlength="32" />
-          <span class="input-cursor" id="inputCursor"></span>
-        </span>
-        <button id="accessSubmit" style="
-          background: rgba(0, 255, 65, 0.1);
-          border: 1px solid var(--green);
-          color: var(--green);
-          padding: 8px 16px;
-          margin-left: 10px;
-          cursor: pointer;
-          font-family: var(--mono);
-          font-size: 12px;
-          letter-spacing: 0.1em;
-          border-radius: 4px;
-          transition: all 0.3s ease;
-        ">ВОЙТИ</button>
-      </div>
+  <span class="prompt-label">КЛЮЧ ДОСТУПА:</span>
+  <span class="input-wrapper">
+    <input id="accessKey" type="password" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Ключ доступа" maxlength="32" />
+    <span class="input-cursor" id="inputCursor"></span>
+  </span>
+  <button id="accessSubmit" style="
+    background: transparent;
+    border: none;
+    color: var(--green);
+    font-size: 24px;
+    cursor: pointer;
+    padding: 4px 8px;
+    margin-left: 6px;
+    transition: all 0.2s ease;
+    opacity: 0.6;
+  ">✔</button>
+</div>
 
       <div id="bootFeedback" class="boot-feedback"></div>
       <div id="attemptCounter" class="boot-attempt-counter"></div>
